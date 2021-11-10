@@ -1,7 +1,6 @@
 package exercise.beans;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * @author kevin.cook - Kevin Cook
