@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import exercise.beans.Exercise;
 import exercise.beans.Session;
-import exercise.repository.ExerciseRepository;
+import exercise.repository.SessionRepository;
 
 /**
  * @author Noah Chung - nmchung
@@ -17,11 +19,11 @@ import exercise.repository.ExerciseRepository;
  */
 
 @Controller
-public class WebController {
+public class SessionsWebController {
 	@Autowired
-	ExerciseRepository repo;
+	SessionRepository repo;
 	
-	@GetMapping({ "/", "viewAllSessions" })
+	@GetMapping("/viewAllSessions")
 	public String viewAllSessions(Model model) {
 		if(repo.findAll().isEmpty()) {
 			return addNewSession(model);
@@ -40,6 +42,26 @@ public class WebController {
 	@PostMapping("/inputSession")
 	public String addNewSession(@ModelAttribute Session s, Model model) {
 		repo.save(s);
+		return viewAllSessions(model);
+	}
+	
+	@GetMapping("/editSession/{id}")
+	public String showUpdateSession(@PathVariable("id") long id, Model model) {
+		Session s = repo.findById(id).orElse(null);
+		model.addAttribute("newSession", s);
+		return "input";
+	}
+	
+	@PostMapping("/updateSession/{id}")
+	public String reviseSession(Session s, Model model) {
+		repo.save(s);
+		return viewAllSessions(model);
+	}
+	
+	@GetMapping("/deleteSession/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+		Session s = repo.findById(id).orElse(null);
+		repo.delete(s);
 		return viewAllSessions(model);
 	}
 }
