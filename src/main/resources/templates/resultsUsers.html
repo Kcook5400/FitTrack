@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>View All Users</title>
+	</head>
+	<body>
+		<form>
+			<table>
+				<tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Day Joined</th>
+                    <th>Email</th>
+                </tr>
+				<tr th:each= "currentUser : ${user}" style="text-align:center">
+					<td th:text= "${currentUser.userName}"/>
+					<td th:text= "${currentUser.dayJoined}"/>
+					<td th:text= "${currentUser.email}"/>
+					<td><a th:href= "@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
+					<td><a th:href= "@{/deleteUser/{id}(id=${currentUser.id})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+	<a href="inputExercise">Add a new user</a>
+	</body>
+</html>

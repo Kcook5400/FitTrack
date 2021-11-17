@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<title>Input Exercise Information</title>		
+		<script type = "text/javascript">
+			function validateInput(form) {
+				/*
+				TODO, validate form input based on form parameters.
+				if(form.name.value == "") {
+					alert("Please enter a first name!");
+					return false;
+				}
+				if(form.password.value == "") {
+					alert("Please enter a first name!");
+					return false;
+				}
+				*/
+				return (true);
+			}
+		</script>
+	</head>
+	<body>
+		<form th:object="${newExercise}" th:action="@{/update/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+			User Name: <input name="name" size="20" th:field="*{name}"><br>
+			Password: <input name="type" size="20" th:field="*{type}"><br>
+			<input name="submit" type="submit" value="submit"/>
+		</form>
+		<a href="index.html">Return to menu</a>
+	</body>
+</html>
