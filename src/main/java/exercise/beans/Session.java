@@ -17,7 +17,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
-/*
+
 @Data
 @Entity
 public class Session {
@@ -36,7 +36,7 @@ public class Session {
 		super();
 	}
 }
-*/
+
 	/**
 	 * @param id
 	 * @param dayPerformed
