@@ -21,9 +21,9 @@
 		</script>
 	</head>
 	<body>
-		<form th:object="${newExercise}" th:action="@{/update/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
-			User Name: <input name="name" size="20" th:field="*{name}"><br>
-			Password: <input name="type" size="20" th:field="*{type}"><br>
+		<form th:object="${newExercise}" th:action="@{/updateExercise/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+			Exercise Name: <input name="name" size="20" th:field="*{name}"><br>
+			Exercise Type: <input name="type" size="20" th:field="*{type}"><br>
 			<input name="submit" type="submit" value="submit"/>
 		</form>
 		<a href="index.html">Return to menu</a>
