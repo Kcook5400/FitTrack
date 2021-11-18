@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>View All Exercises</title>
+	</head>
+	<body>
+		<form>
+			<table>
+				<tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                </tr>
+				<tr th:each= "currentExercise : ${exercise}" style="text-align:center">
+					<td th:text= "${currentExercise.id}"/>
+					<td th:text= "${currentExercise.name}"/>
+					<td th:text= "${currentExercise.type}"/>
+					<td><a th:href= "@{/editExercise/{id}(id=${currentExercise.id})}">Edit</a></td>
+					<td><a th:href= "@{/deleteExercise/{id}(id=${currentExercise.id})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+	<a href="inputExercise">Add a new exercise</a>
+	</body>
+</html>
