@@ -12,6 +12,7 @@ import lombok.Data;
  *CIS175 - Fall 2021 
  * Nov 10, 2021
  */
+/*
 @Data
 @Entity
 public class ExercisesInSession {
@@ -23,13 +24,15 @@ public class ExercisesInSession {
 	private Session session;
 	Exercise exercise;
 	int minutes;
-	
+	*/
 
 	/**
 	 * 
 	 */
+/*
 	public ExercisesInSession() {
 		// TODO Auto-generated constructor stub
 	}
 
 }
+*/

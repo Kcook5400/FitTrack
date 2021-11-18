@@ -27,14 +27,14 @@ public class ExerciseWebController {
 			return addNewExercise(model);
 		}
 		model.addAttribute("exercises", repo.findAll());
-		return "results";
+		return "resultsExercise";
 	}
 	
 	@GetMapping("/inputExercise")
 	public String addNewExercise(Model model) {
 		Exercise e = new Exercise();
 		model.addAttribute("newExercise", e);
-		return "input";
+		return "inputExercise";
 	}
 	
 	@PostMapping("/inputExercise")
@@ -47,7 +47,7 @@ public class ExerciseWebController {
 	public String showUpdateExercise(@PathVariable("id") long id, Model model) {
 		Exercise e = repo.findById(id).orElse(null);
 		model.addAttribute("newExercise", e);
-		return "input";
+		return "inputExercise";
 	}
 	
 	@PostMapping("/updateExercise/{id}")

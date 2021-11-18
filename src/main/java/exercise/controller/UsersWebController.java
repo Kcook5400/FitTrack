@@ -28,14 +28,14 @@ public class UsersWebController {
 			return addNewUser(model);
 		}
 		model.addAttribute("users", repo.findAll());
-		return "results";
+		return "resultsUsers";
 	}
 	
 	@GetMapping("/inputUser")
 	public String addNewUser(Model model) {
 		Users c = new Users();
 		model.addAttribute("newUser", c);
-		return "input";
+		return "inputUsers";
 	}
 	
 	@PostMapping("/inputUser")
@@ -48,7 +48,7 @@ public class UsersWebController {
 	public String showUpdateUser(@PathVariable("id") long id, Model model) {
 		Users u = repo.findById(id).orElse(null);
 		model.addAttribute("newUser", u);
-		return "input";
+		return "inputUsers";
 	}
 	
 	@PostMapping("/updateUser/{id}")
