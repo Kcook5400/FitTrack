@@ -27,7 +27,6 @@ public class WorkoutSession {
 	private LocalDate dayPerformed ;
 	@Autowired
 	private User user;
-	@Autowired
 	private String location;
 	
 

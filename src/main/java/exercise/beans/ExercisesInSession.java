@@ -20,8 +20,7 @@ public class ExercisesInSession {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Autowired
-	private WorkoutSession session;
+	private WorkoutSession workoutSession;
 	@Autowired
 	Exercise exercise;
 	int minutes;
