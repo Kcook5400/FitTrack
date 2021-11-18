@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Session {
+public class WorkoutSession {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -32,7 +32,7 @@ public class Session {
 	
 
 	
-	public Session() {
+	public WorkoutSession() {
 		super();
 	}
 }
