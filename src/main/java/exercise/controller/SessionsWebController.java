@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import exercise.beans.Exercise;
-import exercise.beans.Session;
-import exercise.repository.SessionRepository;
+//import exercise.beans.Session;
+//import exercise.repository.SessionRepository;
 
 /**
  * @author Noah Chung - nmchung
  * CIS175 - Fall 2021
  * Nov 14, 2021
  */
-
+/*
 @Controller
 public class SessionsWebController {
 	@Autowired
@@ -29,14 +29,14 @@ public class SessionsWebController {
 			return addNewSession(model);
 		}
 		model.addAttribute("sessions", repo.findAll());
-		return "results";
+		return "sessionResults";
 	}
 	
 	@GetMapping("/inputSession")
 	public String addNewSession(Model model) {
 		Session s = new Session();
 		model.addAttribute("newSession", s);
-		return "input";
+		return "sessionInput";
 	}
 	
 	@PostMapping("/inputSession")
@@ -49,7 +49,7 @@ public class SessionsWebController {
 	public String showUpdateSession(@PathVariable("id") long id, Model model) {
 		Session s = repo.findById(id).orElse(null);
 		model.addAttribute("newSession", s);
-		return "input";
+		return "sessionInput";
 	}
 	
 	@PostMapping("/updateSession/{id}")
@@ -65,3 +65,4 @@ public class SessionsWebController {
 		return viewAllSessions(model);
 	}
 }
+*/
