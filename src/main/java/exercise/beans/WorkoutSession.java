@@ -25,8 +25,7 @@ public class WorkoutSession {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private LocalDate dayPerformed ;
-	@Autowired
-	private User user;
+	private Users users;
 	private String location;
 	
 
