@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.Data;
 
 /**
@@ -20,8 +21,9 @@ public class ExercisesInSession {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@OneToOne
 	private WorkoutSession workoutSession;
-	@Autowired
+	@ManyToOne
 	Exercise exercise;
 	int minutes;
 
