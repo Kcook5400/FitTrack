@@ -27,7 +27,7 @@ public class UsersWebController {
 		if(repo.findAll().isEmpty()) {
 			return addNewUser(model);
 		}
-		model.addAttribute("users", repo.findAll());
+		model.addAttribute("user", repo.findAll());
 		return "resultsUsers";
 	}
 	

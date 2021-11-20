@@ -16,6 +16,7 @@ import exercise.repository.ExerciseRepository;
  * CIS175 - Fall 2021
  * Nov 15, 2021
  */
+
 @Controller
 public class ExerciseWebController {
 	@Autowired
@@ -26,7 +27,7 @@ public class ExerciseWebController {
 		if(repo.findAll().isEmpty()) {
 			return addNewExercise(model);
 		}
-		model.addAttribute("exercises", repo.findAll());
+		model.addAttribute("exercise", repo.findAll());
 		return "resultsExercise";
 	}
 	

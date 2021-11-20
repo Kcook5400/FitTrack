@@ -11,58 +11,59 @@ import org.springframework.web.bind.annotation.PostMapping;
 import exercise.beans.Exercise;
 //import exercise.beans.Session;
 //import exercise.repository.SessionRepository;
+import exercise.beans.WorkoutSession;
+import exercise.repository.WorkoutSessionRepository;
 
 /**
  * @author Noah Chung - nmchung
  * CIS175 - Fall 2021
  * Nov 14, 2021
  */
-/*
+
 @Controller
-public class SessionsWebController {
+public class WorkoutSessionsWebController {
 	@Autowired
-	SessionRepository repo;
+	WorkoutSessionRepository repo;
 	
 	@GetMapping("/viewAllSessions")
 	public String viewAllSessions(Model model) {
 		if(repo.findAll().isEmpty()) {
 			return addNewSession(model);
 		}
-		model.addAttribute("sessions", repo.findAll());
-		return "sessionResults";
+		model.addAttribute("session", repo.findAll());
+		return "resultsSessions";
 	}
 	
 	@GetMapping("/inputSession")
 	public String addNewSession(Model model) {
-		Session s = new Session();
-		model.addAttribute("newSession", s);
-		return "sessionInput";
+		WorkoutSession ws = new WorkoutSession();
+		model.addAttribute("newSession", ws);
+		return "inputSessions";
 	}
 	
 	@PostMapping("/inputSession")
-	public String addNewSession(@ModelAttribute Session s, Model model) {
-		repo.save(s);
+	public String addNewSession(@ModelAttribute WorkoutSession ws, Model model) {
+		repo.save(ws);
 		return viewAllSessions(model);
 	}
 	
 	@GetMapping("/editSession/{id}")
 	public String showUpdateSession(@PathVariable("id") long id, Model model) {
-		Session s = repo.findById(id).orElse(null);
-		model.addAttribute("newSession", s);
-		return "sessionInput";
+		WorkoutSession ws = repo.findById(id).orElse(null);
+		model.addAttribute("newSession", ws);
+		return "inputSessions";
 	}
 	
 	@PostMapping("/updateSession/{id}")
-	public String reviseSession(Session s, Model model) {
-		repo.save(s);
+	public String reviseSession(WorkoutSession ws, Model model) {
+		repo.save(ws);
 		return viewAllSessions(model);
 	}
 	
 	@GetMapping("/deleteSession/{id}")
 	public String deleteUser(@PathVariable("id") long id, Model model) {
-		Session s = repo.findById(id).orElse(null);
-		repo.delete(s);
+		WorkoutSession ws = repo.findById(id).orElse(null);
+		repo.delete(ws);
 		return viewAllSessions(model);
 	}
 }
-*/
