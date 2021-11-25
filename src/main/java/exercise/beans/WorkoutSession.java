@@ -27,9 +27,12 @@ public class WorkoutSession {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private LocalDate dayPerformed ;
-	@OneToOne
-	private Users users;
+	//@OneToOne
+	//private Users users;
 	private String location;
+	int minutes;
+	//@ManyToOne
+	//Exercise exercise;
 	
 
 	
