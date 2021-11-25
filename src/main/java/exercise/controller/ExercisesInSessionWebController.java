@@ -1,3 +1,4 @@
+/*
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import exercise.repository.ExercisesInSessionRepository;
  * @author Noah Chung - nmchung
  * CIS175 - Fall 2021
  * Nov 19, 2021
- */
+ 
 public class ExercisesInSessionWebController {
 	@Autowired
 	ExercisesInSessionRepository repo;
@@ -61,3 +62,4 @@ public class ExercisesInSessionWebController {
 		return viewAllExercisesInSession(model);
 	}
 }
+*/
