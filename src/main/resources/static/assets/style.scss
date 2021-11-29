@@ -1,0 +1,60 @@
+$color-palette1: #000000;
+$color-palette2: #003333;
+$color-palette3: #ff9900;
+$color-palette4: #cccccc;
+$color-palette5: #ffffff;
+
+body {
+    margin: auto;
+    width: 1024px;
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+header {
+    text-align: center;
+}
+nav {
+    text-align: center;
+    background: $color-palette2;
+
+}
+nav a{    
+    display: inline-block;
+    padding: .5em;
+    margin: 0.5em 0;
+    text-decoration: none;
+    color: black;
+    background-color: $color-palette3;
+    font-size:x-large;
+}
+.main {
+    margin: auto;
+    width: 720px;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+    display: inline-block;
+    border: 2px solid black;
+    padding: 0.5em;
+    text-align: left;
+}
+label {
+    display: inline-block;
+    padding-right: 1em;
+    text-align: right;
+    width: 25%;
+}
+input {
+    width: 70%;
+    margin-top: 0.5em;
+}
+
+input[name="submit"] {
+    width: 10%;
+    background-color: $color-palette3;
+    margin-top: 0.5em;
+    margin-left: 196px;
+}
