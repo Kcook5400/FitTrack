@@ -1,3 +1,4 @@
+/*
 package exercise.beans;
 
 import java.time.LocalDate;
@@ -6,7 +7,7 @@ import java.time.LocalDate;
  * @author kevin.cook - Kevin Cook
  *CIS175 - Fall 2021 
  * Nov 8, 2021
- */
+
 
 
 import javax.persistence.Entity;
@@ -41,9 +42,4 @@ public class WorkoutSession {
 	}
 }
 
-	/**
-	 * @param id
-	 * @param dayPerformed
-	 * @param exercises
-	 * @param location
-	 */
+	*/
