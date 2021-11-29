@@ -1,17 +1,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../assets/style.css">
 		<title>FitTrack Main Menu</title>		
 		<script type = "text/javascript">
 		</script>
 	</head>
 	<body>
-		<h1>FitTrack Main Menu</h1>
-		<a href="exercise.html">Exercise</a>
-		<br>
-		<a href="users.html">Users</a>
-		<br>
-		<a href="session.html">Sessions</a>
+		<header>
+			<img src="../assets/logo.png">
+		</header>
+
+		<nav>
+			<a href="exercise.html">Exercise</a>
+
+			<a href="users.html">Users</a>
+
+			<a href="session.html">Sessions</a>
+		</nav>
+		<div class="main">
+			Mock form
+			<form th:object="${newExercise}" th:action="@{/updateExercise/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+				<label>Exercise Name: </label><input name="name" size="20" th:field="*{name}"><br>
+				<label>Exercise Type: </label><input name="type" size="20" th:field="*{type}"><br>
+				<input name="submit" type="submit" value="Submit"/>
+			</form>
+		</div>
+
+		
+
 	</body>
 </html>
