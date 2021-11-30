@@ -10,11 +10,13 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Type</th>
+                    <th>Minutes</th>
                 </tr>
 				<tr th:each= "currentExercise : ${exercise}" style="text-align:center">
 					<td th:text= "${currentExercise.id}"/>
 					<td th:text= "${currentExercise.name}"/>
 					<td th:text= "${currentExercise.type}"/>
+					<td th:text= "${currentExercise.minutes}"/>
 					<td><a th:href= "@{/editExercise/{id}(id=${currentExercise.id})}">Edit</a></td>
 					<td><a th:href= "@{/deleteExercise/{id}(id=${currentExercise.id})}">Delete</a></td>
 				</tr>

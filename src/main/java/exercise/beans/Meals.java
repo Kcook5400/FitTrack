@@ -24,6 +24,7 @@ public class Meals {
 	private int mealTimeHours;
 	private int mealTimeMInutes;
 	private int calories;
+	private long userId;
 	
 	
 	/**

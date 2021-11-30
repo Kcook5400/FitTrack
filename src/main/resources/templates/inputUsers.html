@@ -31,6 +31,7 @@
 	<body>
 		<form th:object="${newUser}" th:action="@{/updateUser/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 			User Name: <input name="userName" size="20" th:field="*{userName}"><br>
+			Password: <input name="password" size="20" th:field="*{password}"><br>
 			Day Joined: <input name="dayJoined" size="20" th:field="*{dayJoined}"><br>
 			Email: <input name="email" size="20" th:field="*{email}"><br>
 			<input name="submit" type="submit" value="submit"/>

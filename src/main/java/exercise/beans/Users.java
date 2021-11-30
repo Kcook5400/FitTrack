@@ -30,6 +30,7 @@ public class Users{
 	private String userName;
 	private String dayJoined ;
 	private String email;
+	private String password;
 	/**
 	 * @param id
 	 * @param userName

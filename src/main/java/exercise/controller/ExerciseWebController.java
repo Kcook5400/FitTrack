@@ -1,5 +1,7 @@
 package exercise.controller;
 
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import exercise.beans.Exercise;
+import exercise.beans.Users;
 import exercise.repository.ExerciseRepository;
 
 /**
@@ -18,16 +22,26 @@ import exercise.repository.ExerciseRepository;
  */
 
 @Controller
+@SessionAttributes("user_id")
 public class ExerciseWebController {
 	@Autowired
 	ExerciseRepository repo;
-
+	
 	@GetMapping("/viewAllExercises")
 	public String viewAllExercises(Model model) {
 		if(repo.findAll().isEmpty()) {
 			return addNewExercise(model);
 		}
-		model.addAttribute("exercise", repo.findAll());
+		long id = Long.parseLong(model.getAttribute("user_id").toString());
+		LinkedList<Exercise> exerciseList = new LinkedList<Exercise>();
+		LinkedList<Exercise> newList = new LinkedList<Exercise>();
+		repo.findAll().forEach(exerciseList::add);
+		for (int i = 0; i < exerciseList.size(); i++) {
+			if (exerciseList.get(i).getUserId() == id) {
+				newList.add(exerciseList.get(i));
+			}
+		}
+		model.addAttribute("exercise", newList);
 		return "resultsExercise";
 	}
 	
@@ -40,6 +54,7 @@ public class ExerciseWebController {
 	
 	@PostMapping("/inputExercise")
 	public String addNewExercise(@ModelAttribute Exercise e, Model model) {
+		e.setUserId(Long.parseLong(model.getAttribute("user_id").toString()));
 		repo.save(e);
 		return viewAllExercises(model);
 	}
@@ -53,6 +68,7 @@ public class ExerciseWebController {
 	
 	@PostMapping("/updateExercise/{id}")
 	public String reviseExercise(Exercise e, Model model) {
+		e.setUserId(Long.parseLong(model.getAttribute("user_id").toString()));
 		repo.save(e);
 		return viewAllExercises(model);
 	}

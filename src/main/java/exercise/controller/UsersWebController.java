@@ -1,5 +1,7 @@
 package exercise.controller;
 
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import exercise.beans.Users;
 import exercise.repository.UsersRepository;
@@ -18,16 +21,56 @@ import exercise.repository.UsersRepository;
  */
 
 @Controller
+@SessionAttributes("user_id")
 public class UsersWebController {
 	@Autowired
 	UsersRepository repo;
 
+	@GetMapping("/login")
+	public String loginUser(Model model) {
+		if(repo.findAll().isEmpty()) {
+			return addNewUser(model);
+		}
+		Users u = new Users();
+		model.addAttribute("newUser", u);
+		
+		return "login";
+	}
+	
+	@PostMapping("/login/{id}")
+	public String loginUser(@ModelAttribute Users u, Model model) {
+		LinkedList<Users> usersList = new LinkedList<Users>();
+		repo.findAll().forEach(usersList::add);
+		for (int i = 0; i < usersList.size(); i++) {
+			if (usersList.get(i).getUserName().equals(u.getUserName())) {
+				if (u.getPassword().equals(usersList.get(i).getPassword())) {
+					model.addAttribute("user_id", usersList.get(i).getId());
+					return viewAllUsers(model); // NEEDS TO BE CHANGED
+					// once a main menu is created this will need to return to 
+					// the main menu html file using "fileName". File must be in
+					// the templates folder
+				}
+			}
+		}
+		return loginUser(model);
+	}
+	
 	@GetMapping("/viewAllUsers")
 	public String viewAllUsers(Model model) {
 		if(repo.findAll().isEmpty()) {
 			return addNewUser(model);
 		}
-		model.addAttribute("user", repo.findAll());
+		long id = Long.parseLong(model.getAttribute("user_id").toString());
+		LinkedList<Users> usersList = new LinkedList<Users>();
+		LinkedList<Users> newList = new LinkedList<Users>();
+		repo.findAll().forEach(usersList::add);
+		for (int i = 0; i < usersList.size(); i++) {
+			if (usersList.get(i).getId() == id) {
+				newList.add(usersList.get(i));
+			}
+		}
+		
+		model.addAttribute("user", newList);
 		return "resultsUsers";
 	}
 	
@@ -41,7 +84,7 @@ public class UsersWebController {
 	@PostMapping("/inputUser")
 	public String addNewUser(@ModelAttribute Users u, Model model) {
 		repo.save(u);
-		return viewAllUsers(model);
+		return loginUser(model);
 	}
 	
 	@GetMapping("/editUser/{id}")
@@ -54,7 +97,7 @@ public class UsersWebController {
 	@PostMapping("/updateUser/{id}")
 	public String reviseUser(Users u, Model model) {
 		repo.save(u);
-		return viewAllUsers(model);
+		return loginUser(model);
 	}
 	
 	@GetMapping("/deleteUser/{id}")

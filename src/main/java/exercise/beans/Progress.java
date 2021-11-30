@@ -23,6 +23,7 @@ public class Progress {
 	private int minutesSlept;
 	private double goalWeight;
 	private double currentWeight;
+	private long userId;
 	
 	
 	/**
