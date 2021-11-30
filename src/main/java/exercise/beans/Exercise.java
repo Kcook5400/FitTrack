@@ -23,7 +23,8 @@ public class Exercise {
 	private long id;
 	private String name;
 	private String type;
-	
+	private int minutes;
+	private long userId;
 	
 	
 	/**

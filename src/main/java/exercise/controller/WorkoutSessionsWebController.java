@@ -1,3 +1,4 @@
+/*
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import exercise.beans.Exercise;
-//import exercise.beans.Session;
-//import exercise.repository.SessionRepository;
+import exercise.beans.Session;
+import exercise.repository.SessionRepository;
 import exercise.beans.WorkoutSession;
 import exercise.repository.WorkoutSessionRepository;
-
+*/
 /**
  * @author Noah Chung - nmchung
  * CIS175 - Fall 2021
  * Nov 14, 2021
  */
-
+/*
 @Controller
 public class WorkoutSessionsWebController {
 	@Autowired
@@ -67,3 +68,4 @@ public class WorkoutSessionsWebController {
 		return viewAllSessions(model);
 	}
 }
+*/

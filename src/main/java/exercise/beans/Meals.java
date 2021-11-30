@@ -1,6 +1,9 @@
 package exercise.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.Data;
 
@@ -14,12 +17,14 @@ import lombok.Data;
 @Entity
 
 public class Meals {
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	private String meal;
 	private int mealTimeHours;
 	private int mealTimeMInutes;
 	private int calories;
+	private long userId;
 	
 	
 	/**

@@ -24,6 +24,7 @@
 		<form th:object="${newExercise}" th:action="@{/updateExercise/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 			Exercise Name: <input name="name" size="20" th:field="*{name}"><br>
 			Exercise Type: <input name="type" size="20" th:field="*{type}"><br>
+			Exercise Minutes: <input name="type" size="20" th:field="*{minutes}"><br>
 			<input name="submit" type="submit" value="submit"/>
 		</form>
 		<a href="index.html">Return to menu</a>

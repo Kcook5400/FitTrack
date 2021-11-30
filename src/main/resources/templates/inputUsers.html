@@ -2,27 +2,36 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="style.css">
-		<title>Input User Information</title>		
-		<script type = "text/javascript">
-			function validateInput(form) {
-				/*
-				TODO, validate form input based on form parameters.
-				if(form.name.value == "") {
-					alert("Please enter a first name!");
+		<title>Input User Information</title>
+
+		<script type="text/javascript">
+			function validateInput() {
+				var date = document.inputForm.dayJoined.value;
+				var currDate;
+				var day;
+				var month;
+				var year;
+				currDate = date.substring(date.indexOf("/") + 1);
+				month = date.substring(0, date.indexOf("/"));
+				day = currDate.substring(0, currDate.indexOf("/"));
+				year = currDate.substring(date.indexOf("/") + 1);
+				
+				if (date == "" || !date.indexOf("/") == -1 || !currDate.indexOf("/") == -1 
+						|| isNaN(month) || isNaN(day) || isNaN(year) || day == "" || month == "" 
+						|| year == "" || month > 12 || month < 1 || day > 31 || day < 1 || year < 2021) {
+					alert("Invalid date. The format is MM/DD/YYYY!");
 					return false;
 				}
-				if(form.password.value == "") {
-					alert("Please enter a first name!");
-					return false;
-				}
-				*/
-				return (true);
+				
+				return true;
 			}
-		</script>
-	</head>
+</script>
+
+</head>
 	<body>
 		<form th:object="${newUser}" th:action="@{/updateUser/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 			User Name: <input name="userName" size="20" th:field="*{userName}"><br>
+			Password: <input name="password" size="20" th:field="*{password}"><br>
 			Day Joined: <input name="dayJoined" size="20" th:field="*{dayJoined}"><br>
 			Email: <input name="email" size="20" th:field="*{email}"><br>
 			<input name="submit" type="submit" value="submit"/>

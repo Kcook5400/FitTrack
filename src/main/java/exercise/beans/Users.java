@@ -6,7 +6,6 @@ package exercise.beans;
  * Nov 8, 2021
  */
 
-import java.time.LocalDate;
 
 /**
  * @author kevin.cook - Kevin Cook
@@ -29,8 +28,9 @@ public class Users{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String userName;
-	private LocalDate dayJoined ;
+	private String dayJoined ;
 	private String email;
+	private String password;
 	/**
 	 * @param id
 	 * @param userName

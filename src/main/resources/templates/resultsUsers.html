@@ -9,11 +9,14 @@
 				<tr>
                     <th>ID</th>
                     <th>Username</th>
+                    <th>Password</th>
                     <th>Day Joined</th>
                     <th>Email</th>
                 </tr>
 				<tr th:each= "currentUser : ${user}" style="text-align:center">
+					<td th:text= "${currentUser.id}"/>
 					<td th:text= "${currentUser.userName}"/>
+					<td th:text= "${currentUser.password}"/>
 					<td th:text= "${currentUser.dayJoined}"/>
 					<td th:text= "${currentUser.email}"/>
 					<td><a th:href= "@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
