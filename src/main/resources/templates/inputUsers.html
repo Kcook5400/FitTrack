@@ -1,8 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
-		<title>Input User Information</title>
+		<link rel="stylesheet" href="assets/style.css">
+		<title>Create New User</title>
 
 		<script type="text/javascript">
 			function validateInput() {
@@ -16,10 +16,22 @@
 				day = currDate.substring(0, currDate.indexOf("/"));
 				year = currDate.substring(date.indexOf("/") + 1);
 				
+				if(inputForm.userName.value == "") {
+					alert("Please enter a username!");
+					return false;
+				}
+				if(inputForm.password.value == "") {
+					alert("Please enter a password!");
+					return false;
+				}
 				if (date == "" || !date.indexOf("/") == -1 || !currDate.indexOf("/") == -1 
 						|| isNaN(month) || isNaN(day) || isNaN(year) || day == "" || month == "" 
 						|| year == "" || month > 12 || month < 1 || day > 31 || day < 1 || year < 2021) {
 					alert("Invalid date. The format is MM/DD/YYYY!");
+					return false;
+				}
+				if(inputForm.email.value == "") {
+					alert("Please enter an email!");
 					return false;
 				}
 				
@@ -29,13 +41,26 @@
 
 </head>
 	<body>
+		<header>
+			<a href="index.html"><img src="assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="exercise.html">Exercise</a>
+
+			<a href="users.html">Users</a>
+
+			<a href="session.html">Sessions</a>
+		</nav>
+	<div class="main">
 		<form th:object="${newUser}" th:action="@{/updateUser/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
-			User Name: <input name="userName" size="20" th:field="*{userName}"><br>
-			Password: <input name="password" size="20" th:field="*{password}"><br>
-			Day Joined: <input name="dayJoined" size="20" th:field="*{dayJoined}"><br>
-			Email: <input name="email" size="20" th:field="*{email}"><br>
-			<input name="submit" type="submit" value="submit"/>
+			<label>User Name:</label><input name="userName" size="20" th:field="*{userName}"><br>
+			<label>Password:</label><input name="password" size="20" th:field="*{password}"><br>
+			<label>Day Joined:</label><input name="dayJoined" size="20" th:field="*{dayJoined}"><br>
+			<label>Email:</label><input name="email" size="20" th:field="*{email}"><br>
+			<input name="submit" type="submit" value="Submit"/>
 		</form>
-		<a href="index.html">Return to menu</a>
+		<a href="index.html">Return to login</a>
+	</div>
 	</body>
 </html>

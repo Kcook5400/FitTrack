@@ -1,12 +1,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="assets/style.css">
 		<title>Input Session Information</title>		
 		<script type = "text/javascript">
 			function validateInput(form) {
-				/*
-				TODO, validate form input based on form parameters.
 				if(form.name.value == "") {
 					alert("Please enter a first name!");
 					return false;
@@ -15,16 +13,26 @@
 					alert("Please enter a first name!");
 					return false;
 				}
-				*/
 				return (true);
 			}
 		</script>
 	</head>
 	<body>
+		<header>
+			<img src="assets/logo.png">
+		</header>
+
+		<nav>
+			<a href="exercise.html">Exercise</a>
+
+			<a href="users.html">Users</a>
+
+			<a href="session.html">Sessions</a>
+		</nav>
 		<form th:object="${newSession}" th:action="@{/updateSession/{id}(id=${newSession.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
-			Day Performed: <input name="dayPerformed" size="20" th:field="*{dayPerformed}"><br>
-			Username: <input name="users.username" size="20" th:field="*{users.username}"><br>
-			Location: <input name="location" size="20" th:field="*{location}"><br>
+			<label>Day Performed:</label><input name="dayPerformed" size="20" th:field="*{dayPerformed}"><br>
+			<label>User Name:</label><input name="users.username" size="20" th:field="*{users.username}"><br>
+			<label>Location:</label><input name="location" size="20" th:field="*{location}"><br>
 			<input name="submit" type="submit" value="submit"/>
 		</form>
 		<a href="index.html">Return to menu</a>
