@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import exercise.beans.Exercise;
-import exercise.beans.Users;
 import exercise.repository.ExerciseRepository;
 
 /**
@@ -74,7 +73,7 @@ public class ExerciseWebController {
 	}
 	
 	@GetMapping("/deleteExercise/{id}")
-	public String deleteUser(@PathVariable("id") long id, Model model) {
+	public String deleteExercise(@PathVariable("id") long id, Model model) {
 		Exercise e = repo.findById(id).orElse(null);
 		repo.delete(e);
 		return viewAllExercises(model);
