@@ -10,6 +10,10 @@ header {
   text-align: center;
 }
 
+h1 {
+  text-align: center;
+}
+
 nav {
   text-align: center;
   background: #003333;
@@ -26,6 +30,7 @@ nav a {
 }
 
 .main {
+  padding: 0.5em;
   margin: auto;
   width: 720px;
   text-align: center;
@@ -41,20 +46,21 @@ form {
 
 label {
   display: inline-block;
-  padding-right: 1em;
+  margin-right: 1em;
   text-align: right;
   width: 25%;
 }
 
 input {
-  width: 70%;
+  width: 50%;
   margin-top: 0.5em;
+  margin-left: 1em;
 }
 
 input[name="submit"] {
   width: 10%;
   background-color: #ff9900;
   margin-top: 0.5em;
-  margin-left: 196px;
+  margin-left: 43%;
 }
 /*# sourceMappingURL=style.css.map */

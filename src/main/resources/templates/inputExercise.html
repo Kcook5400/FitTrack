@@ -1,32 +1,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="assets/style.css">
 		<title>Input Exercise Information</title>		
 		<script type = "text/javascript">
 			function validateInput(form) {
-				/*
-				TODO, validate form input based on form parameters.
-				if(form.name.value == "") {
-					alert("Please enter a first name!");
+				if(inputForm.name.value == "") {
+					alert("Please enter an exercise name!");
 					return false;
 				}
-				if(form.password.value == "") {
-					alert("Please enter a first name!");
+				if(inputForm.type.value == "") {
+					alert("Please enter an exercise type!");
 					return false;
 				}
-				*/
+				if(inputForm.minutes.value == "") {
+					alert("Please enter length of exercise!");
+					return false;
+				}
+				if(inputForm.userId.value == "") {
+					alert("Please enter a user ID for exercise!");
+					return false;
+				}
 				return (true);
 			}
 		</script>
 	</head>
 	<body>
-		<form th:object="${newExercise}" th:action="@{/updateExercise/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
-			Exercise Name: <input name="name" size="20" th:field="*{name}"><br>
-			Exercise Type: <input name="type" size="20" th:field="*{type}"><br>
-			Exercise Minutes: <input name="type" size="20" th:field="*{minutes}"><br>
-			<input name="submit" type="submit" value="submit"/>
-		</form>
-		<a href="index.html">Return to menu</a>
+		<header>
+			<img src="assets/logo.png">
+		</header>
+
+		<nav>
+			<a href="exercise.html">Exercise</a>
+
+			<a href="users.html">Users</a>
+
+			<a href="session.html">Sessions</a>
+		</nav>
+		<div class="main">
+			<form th:object="${newExercise}" th:action="@{/updateExercise/{id}(id=${newExercise.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+			<label>Exercise Name:</label><input name="name" size="20" th:field="*{name}"><br>
+			<label>Exercise Type:</label><input name="type" size="20" th:field="*{type}"><br>
+			<label>Exercise Minutes:</label><input name="minutes" size="20" th:field="*{minutes}"><br>
+			<label>User ID:</label><input name="userId" size="20" th:field="*{userId}"><br>
+			<input name="submit" type="submit" value="Submit"/>
+			</form>
+			<a href="index.html">Return to menu</a>
+			
+		</div>
+
 	</body>
 </html>
