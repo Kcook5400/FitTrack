@@ -1,19 +1,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../static/assets/style.css">
+		<link rel="stylesheet" href="../assets/style.css">
 		<title>View All Progress</title>
 	</head>
 	<body>
 		<header>
-			<a href="index.html"><img src="../static/assets/logo.png"></a>
+			<a href="index.html"><img src="../assets/logo.png"></a>
 		</header>
 
 		<nav>
-			<a href="index.html">Home</a>
-			<a href="inputExercise">Exercise</a>						
-			<a href="inputMeals">Meals</a>			
-			<a href="inputProgress">Progress</a>			
+			<a href="../viewAllUsers">Profile</a>
+			<a href="../inputExercise">Exercise</a>						
+			<a href="../inputMeals">Meals</a>			
+			<a href="../inputProgress">Progress</a>	
+			<a href="../index.html">Logout</a>				
 		</nav>
 		
 		<div class="main">
@@ -24,20 +25,18 @@
 	                    <th>Minutes Slept</th>
 	                    <th>Goal Weight</th>
 	                    <th>Current Weight</th>
-	                    <th>User ID</th>
 	                </tr>
 					<tr th:each= "currentProgress : ${progress}" style="text-align:center">
 						<td th:text= "${currentProgress.hoursSlept}"/>
 						<td th:text= "${currentProgress.minutesSlept}"/>
 						<td th:text= "${currentProgress.goalWeight}"/>
 						<td th:text= "${currentProgress.currentWeight}"/>
-						<td th:text= "${currentProgress.userId}"/>
 						<td class="tablelink"><a th:href= "@{/editProgress/{id}(id=${currentProgress.id})}">Edit</a></td>
 						<td class="tablelink"><a th:href= "@{/deleteProgress/{id}(id=${currentProgress.id})}">Delete</a></td>
 					</tr>
 				</table>
 			</form>
-			<a href="../inputProgress">Add a new progress entry</a>
+			<a href="../mainmenu">Return to main menu</a>	
 		</div>		
 	</body>
 </html>

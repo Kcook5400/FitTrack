@@ -44,14 +44,14 @@ public class MealsWebController {
 		return "resultsMeals";
 	}
 	
-	@GetMapping("/inputMeal")
+	@GetMapping("/inputMeals")
 	public String addNewMeal(Model model) {
 		Meals m = new Meals();
 		model.addAttribute("newMeal", m);
 		return "inputMeals";
 	}
 	
-	@PostMapping("/inputMeal")
+	@PostMapping("/inputMeals")
 	public String addNewMeal(@ModelAttribute Meals m, Model model) {
 		m.setUserId(Long.parseLong(model.getAttribute("user_id").toString()));
 		repo.save(m);

@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../static/assets/style.css">
+		<link rel="stylesheet" href="assets/style.css">
 		<title>Input Session Information</title>		
 		<script type = "text/javascript">
 			function validateInput(form) {
@@ -19,14 +19,15 @@
 	</head>
 	<body>
 		<header>
-			<a href="index.html"><img src="../static/assets/logo.png"></a>
+			<a href="index.html"><img src="assets/logo.png"></a>
 		</header>
 
 		<nav>
-			<a href="index.html">Home</a>
-			<a href="inputExercise">Exercise</a>						
-			<a href="inputMeals">Meals</a>			
-			<a href="inputProgress">Progress</a>			
+			<a href="../viewAllUsers">Profile</a>
+			<a href="../inputExercise">Exercise</a>						
+			<a href="../inputMeals">Meals</a>			
+			<a href="../inputProgress">Progress</a>	
+			<a href="index.html">Logout</a>				
 		</nav>
 
 		<div class="main">
@@ -36,7 +37,7 @@
 				<label>Location:</label><input name="location" size="20" th:field="*{location}"><br>
 				<input name="submit" type="submit" value="submit"/>
 			</form>
-			<a href="index.html">Return to menu</a>
+			<a href="mainmenu">Return to main menu</a>	
 		</div>
 	</body>
 </html>

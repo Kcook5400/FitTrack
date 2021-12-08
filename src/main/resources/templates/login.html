@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../assets/style.css">
+		<title>FitTrack</title>		
+		<script type = "text/javascript">
+			function validateInput() {
+				if(inputForm.userName.value == "") {
+					alert("Please enter a username!");
+					return false;
+				}
+				if(inputForm.password.value == "") {
+					alert("Please enter a password!");
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="../assets/logo.png"></a>
+		</header>
+
+		<nav class="blanknav"></nav>
+
+		<div class="main">			
+			<form th:object="${newUser}" th:action="@{/login/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+				<h1>Login to FitTrack</h1>
+				<label>User Name:</label><input name="userName" size="20" th:field="*{userName}"><br>
+				<label>Password:</label><input name="password" size="20" th:field="*{password}"><br>
+				<input name="submit" type="submit" value="Submit"/>
+			</form>
+			<a href="../inputUser">Create a new account</a>
+		</div>
+	</body>
+</html>

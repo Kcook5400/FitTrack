@@ -1,4 +1,5 @@
 package exercise.beans;
+import java.time.LocalDate;
 
 /**
  * @author kevin.cook - Kevin Cook
@@ -28,7 +29,7 @@ public class Users{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String userName;
-	private String dayJoined ;
+	private LocalDate dayJoined;
 	private String email;
 	private String password;
 	/**

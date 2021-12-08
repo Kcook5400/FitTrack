@@ -1,18 +1,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../static/assets/style.css">
-		<title>FitTrack</title>		
+		<link rel="stylesheet" href="../assets/style.css">
+		<title>View All Users</title>
 	</head>
 	<body>
 		<header>
-			<a href="index.html"><img src="../static/assets/logo.png"></a>
+			<a href="../index.html"><img src="../assets/logo.png"></a>
+			
 		</header>
 
-		<nav class=blanknav></nav>
-
+		<nav>
+			<a href="../viewAllUsers">Profile</a>
+			<a href="../inputExercise">Exercise</a>						
+			<a href="../inputMeals">Meals</a>			
+			<a href="../inputProgress">Progress</a>	
+			<a href="../index.html">Logout</a>		
+		</nav>
+		
 		<div class="main">
-
+			<form>
+				<h1>Welcome to FitTrack!</h1>
+				<p>FitTrack is a program to help you with your fitness routine!</p>
+				<p>Using FitTrack simply click on the navigation bar for whatever 
+				you want to log. It will take you to a menu where you can enter
+				whatever it is you have chosen to log. From there you can view
+				all of the data you have logged in FitTrack! FitTrack keeps 
+				track of your exercises, meals, and your weight and sleep progress!</p>
+				<p>Made an error? That's not a problem! FitTrack allows you to alter
+				the information you entered! Never worry about typos again!
+				<br>Want to delete a record? FitTrack allows you to do that too!</p>
+			</form>
 		</div>
 	</body>
 </html>
