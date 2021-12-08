@@ -1,27 +1,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
 		<title>View All Exercises</title>
 	</head>
 	<body>
-		<form>
-			<table>
-				<tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Minutes</th>
-                </tr>
-				<tr th:each= "currentExercise : ${exercise}" style="text-align:center">
-					<td th:text= "${currentExercise.id}"/>
-					<td th:text= "${currentExercise.name}"/>
-					<td th:text= "${currentExercise.type}"/>
-					<td th:text= "${currentExercise.minutes}"/>
-					<td><a th:href= "@{/editExercise/{id}(id=${currentExercise.id})}">Edit</a></td>
-					<td><a th:href= "@{/deleteExercise/{id}(id=${currentExercise.id})}">Delete</a></td>
-				</tr>
-			</table>
-		</form>
-	<a href="../inputExercise">Add a new exercise</a>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+		
+		<div class="main">
+			<form>
+				<table>
+					<tr>
+	                    <th>ID</th>
+	                    <th>Name</th>
+	                    <th>Type</th>
+	                    <th>Minutes</th>
+	                </tr>
+					<tr th:each= "currentExercise : ${exercise}" style="text-align:center">
+						<td th:text= "${currentExercise.id}"/>
+						<td th:text= "${currentExercise.name}"/>
+						<td th:text= "${currentExercise.type}"/>
+						<td th:text= "${currentExercise.minutes}"/>
+						<td class="tablelink"><a th:href= "@{/editExercise/{id}(id=${currentExercise.id})}">Edit</a></td>
+						<td class="tablelink"><a th:href= "@{/deleteExercise/{id}(id=${currentExercise.id})}">Delete</a></td>
+					</tr>
+				</table>
+			</form>
+			<a href="../inputExercise">Add a new exercise</a>
+		</div>
 	</body>
 </html>

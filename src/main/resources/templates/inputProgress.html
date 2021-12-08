@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
+		<title>Input Progress Information</title>
+		<script type = "text/javascript">
+			function validateInput(form) {
+				if(inputForm.hoursSlept.value == "") {
+					alert("Please enter hours slept!");
+					return false;
+				}
+				if(inputForm.minutesSlept.value == "") {
+					alert("Please enter minutes slept!");
+					return false;
+				}
+				if(inputForm.goalWeight.value == "") {
+					alert("Please enter a goal weight!");
+					return false;
+				}
+				if(inputForm.currentWeight.value == "") {
+					alert("Please enter a current exercise!");
+					return false;
+				}
+				if(inputForm.userId.value == "") {
+					alert("Please enter a user ID!");
+					return false;
+				}
+				return (true);
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+		
+		<div class="main">
+			<form th:object="${newProgress}" th:action="@{/updateProgress/{id}(id=${newProgress.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+			<label>Hours Slept:</label><input name="hoursSlept" size="20" th:field="*{hoursSlept}"><br>
+			<label>Minutes Slept:</label><input name="minutesSlept" size="20" th:field="*{minutesSlept}"><br>
+			<label>Goal Weight:</label><input name="goalWeight" size="20" th:field="*{goalWeight}"><br>
+			<label>Current Weight:</label><input name="currentWeight" size="20" th:field="*{currentWeight}"><br>
+			<label>User ID:</label><input name="userId" size="20" th:field="*{userId}"><br>
+			<input name="submit" type="submit" value="Submit"/>
+			</form>
+			<a href="">Return to main menu</a>			
+		</div>
+	</body>
+</html>

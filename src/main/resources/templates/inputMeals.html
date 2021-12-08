@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
+		<title>Input Meal Information</title>		
+		<script type = "text/javascript">
+			function validateInput(form) {
+				if(inputForm.meal.value == "") {
+					alert("Please enter a meal name!");
+					return false;
+				}
+				if(inputForm.mealTimeHours.value == "") {
+					alert("Please enter a meal time(hours)!");
+					return false;
+				}
+				if(inputForm.mealTimeMInutes.value == "") {
+					alert("Please enter a meal time(minutes)!");
+					return false;
+				}
+				if(inputForm.calories.value == "") {
+					alert("Please enter a calorie value!");
+					return false;
+				}
+				if(inputForm.userId.value == "") {
+					alert("Please enter a user ID!");
+					return false;
+				}
+				return (true);
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+		
+		<div class="main">
+			<form th:object="${newMeal}" th:action="@{/updateMeal/{id}(id=${newMeal.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+				<label>Meal Name:</label><input name="meal" size="20" th:field="*{meal}"><br>
+				<label>Meal Time (Hours):</label><input name="mealTimeHours" size="20" th:field="*{mealTimeHours}"><br>
+				<label>Meal Time (Minutes):</label><input name="mealTimeMInutes" size="20" th:field="*{mealTimeMInutes}"><br>
+				<label>Calories In Meal:</label><input name="calories" size="20" th:field="*{calories}"><br>
+				<label>User ID:</label><input name="userId" size="20" th:field="*{userId}"><br>
+				<input name="submit" type="submit" value="Submit"/>
+			</form>
+			<a href="">Return to main menu</a>			
+		</div>
+	</body>
+</html>

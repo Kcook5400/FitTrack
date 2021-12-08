@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
+		<title>View All Meals</title>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+		
+		<div class="main">
+			<form>
+				<table>
+					<tr>
+	                    <th>Meal</th>
+	                    <th>Meal Hours</th>
+	                    <th>Meal Minutes</th>
+	                    <th>Calories</th>
+	                    <th>User ID</th>
+	                </tr>
+					<tr th:each= "currentMeal : ${meal}" style="text-align:center">
+						<td th:text= "${currentMeal.meal}"/>
+						<td th:text= "${currentMeal.mealTimeHours}"/>
+						<td th:text= "${currentMeal.mealTimeMInutes}"/>
+						<td th:text= "${currentMeal.calories}"/>
+						<td th:text= "${currentMeal.userId}"/>
+						<td class="tablelink"><a th:href= "@{/editMeal/{id}(id=${currentMeal.id})}">Edit</a></td>
+						<td class="tablelink"><a th:href= "@{/deleteMeal/{id}(id=${currentMeal.id})}">Delete</a></td>
+					</tr>
+				</table>
+			</form>
+			<a href="../inputMeal">Add a new meal</a>
+		</div>
+	</body>
+</html>
