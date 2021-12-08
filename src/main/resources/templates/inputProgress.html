@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../static/assets/style.css">
+		<link rel="stylesheet" href="../assets/style.css">
 		<title>Input Progress Information</title>
 		<script type = "text/javascript">
 			function validateInput(form) {
@@ -31,14 +31,15 @@
 	</head>
 	<body>
 		<header>
-			<a href="index.html"><img src="../static/assets/logo.png"></a>
+			<a href="index.html"><img src="../assets/logo.png"></a>
 		</header>
 
 		<nav>
-			<a href="index.html">Home</a>
-			<a href="inputExercise">Exercise</a>						
-			<a href="inputMeals">Meals</a>			
-			<a href="inputProgress">Progress</a>			
+			<a href="../viewAllUsers">Profile</a>
+			<a href="../inputExercise">Exercise</a>						
+			<a href="../inputMeals">Meals</a>			
+			<a href="../inputProgress">Progress</a>	
+			<a href="../index.html">Logout</a>			
 		</nav>
 		
 		<div class="main">
@@ -47,10 +48,10 @@
 			<label>Minutes Slept:</label><input name="minutesSlept" size="20" th:field="*{minutesSlept}"><br>
 			<label>Goal Weight:</label><input name="goalWeight" size="20" th:field="*{goalWeight}"><br>
 			<label>Current Weight:</label><input name="currentWeight" size="20" th:field="*{currentWeight}"><br>
-			<label>User ID:</label><input name="userId" size="20" th:field="*{userId}"><br>
 			<input name="submit" type="submit" value="Submit"/>
 			</form>
-			<a href="">Return to main menu</a>			
+			<a href="../viewAllProgress">View your progress!</a><br>
+			<a href="../mainmenu">Return to main menu</a>				
 		</div>
 	</body>
 </html>

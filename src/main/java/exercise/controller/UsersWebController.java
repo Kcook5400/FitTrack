@@ -1,5 +1,6 @@
 package exercise.controller;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,14 @@ import exercise.repository.UsersRepository;
 @Controller
 @SessionAttributes("user_id")
 public class UsersWebController {
+	private LocalDate date = LocalDate.now();
 	@Autowired
 	UsersRepository repo;
+	
+	@GetMapping("mainmenu")
+	public String mainMenu() {
+		return "mainmenu";
+	}
 
 	@GetMapping("/login")
 	public String loginUser(Model model) {
@@ -45,10 +52,7 @@ public class UsersWebController {
 			if (usersList.get(i).getUserName().equals(u.getUserName())) {
 				if (u.getPassword().equals(usersList.get(i).getPassword())) {
 					model.addAttribute("user_id", usersList.get(i).getId());
-					return viewAllUsers(model); // NEEDS TO BE CHANGED
-					// once a main menu is created this will need to return to 
-					// the main menu html file using "fileName". File must be in
-					// the templates folder
+					return mainMenu();
 				}
 			}
 		}
@@ -76,6 +80,7 @@ public class UsersWebController {
 	
 	@GetMapping("/inputUser")
 	public String addNewUser(Model model) {
+		System.out.println("Test2");
 		Users c = new Users();
 		model.addAttribute("newUser", c);
 		return "inputUsers";
@@ -90,12 +95,14 @@ public class UsersWebController {
 	@GetMapping("/editUser/{id}")
 	public String showUpdateUser(@PathVariable("id") long id, Model model) {
 		Users u = repo.findById(id).orElse(null);
+		date = u.getDayJoined();
 		model.addAttribute("newUser", u);
 		return "inputUsers";
 	}
 	
 	@PostMapping("/updateUser/{id}")
 	public String reviseUser(Users u, Model model) {
+		u.setDayJoined(date);
 		repo.save(u);
 		return loginUser(model);
 	}
@@ -104,6 +111,6 @@ public class UsersWebController {
 	public String deleteUser(@PathVariable("id") long id, Model model) {
 		Users u = repo.findById(id).orElse(null);
 		repo.delete(u);
-		return viewAllUsers(model);
+		return loginUser(model);
 	}
 }
