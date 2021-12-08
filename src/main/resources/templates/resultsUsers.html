@@ -1,29 +1,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
 		<title>View All Users</title>
 	</head>
 	<body>
-		<form>
-			<table>
-				<tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Day Joined</th>
-                    <th>Email</th>
-                </tr>
-				<tr th:each= "currentUser : ${user}" style="text-align:center">
-					<td th:text= "${currentUser.id}"/>
-					<td th:text= "${currentUser.userName}"/>
-					<td th:text= "${currentUser.password}"/>
-					<td th:text= "${currentUser.dayJoined}"/>
-					<td th:text= "${currentUser.email}"/>
-					<td><a th:href= "@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
-					<td><a th:href= "@{/deleteUser/{id}(id=${currentUser.id})}">Delete</a></td>
-				</tr>
-			</table>
-		</form>
-	<a href="../inputUser">Add a new user</a>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+		
+		<div class="main">
+			<form>
+				<table>
+					<tr>
+	                    <th>User ID</th>
+	                    <th>Username</th>
+	                    <th>Day Joined</th>
+	                    <th>Email</th>
+	                    <th>Password</th>
+	                </tr>
+					<tr th:each= "currentUser : ${user}" style="text-align:center">
+						<td th:text= "${currentUser.id}"/>
+						<td th:text= "${currentUser.userName}"/>
+						<td th:text= "${currentUser.dayJoined}"/>
+						<td th:text= "${currentUser.email}"/>
+						<td th:text= "${currentUser.password}"/>
+						<td class="tablelink"><a th:href= "@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
+						<td class="tablelink"><a th:href= "@{/deleteUser/{id}(id=${currentUser.id})}">Delete</a></td>
+					</tr>
+				</table>
+			</form>
+			<a href="../inputUser">Add a new user</a>
+		</div>
 	</body>
 </html>

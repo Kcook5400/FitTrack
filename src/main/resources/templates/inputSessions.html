@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="assets/style.css">
+		<link rel="stylesheet" href="../static/assets/style.css">
 		<title>Input Session Information</title>		
 		<script type = "text/javascript">
 			function validateInput(form) {
@@ -19,22 +19,24 @@
 	</head>
 	<body>
 		<header>
-			<img src="assets/logo.png">
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
 		</header>
 
 		<nav>
-			<a href="exercise.html">Exercise</a>
-
-			<a href="users.html">Users</a>
-
-			<a href="session.html">Sessions</a>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
 		</nav>
-		<form th:object="${newSession}" th:action="@{/updateSession/{id}(id=${newSession.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
-			<label>Day Performed:</label><input name="dayPerformed" size="20" th:field="*{dayPerformed}"><br>
-			<label>User Name:</label><input name="users.username" size="20" th:field="*{users.username}"><br>
-			<label>Location:</label><input name="location" size="20" th:field="*{location}"><br>
-			<input name="submit" type="submit" value="submit"/>
-		</form>
-		<a href="index.html">Return to menu</a>
+
+		<div class="main">
+			<form th:object="${newSession}" th:action="@{/updateSession/{id}(id=${newSession.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
+				<label>Day Performed:</label><input name="dayPerformed" size="20" th:field="*{dayPerformed}"><br>
+				<label>User Name:</label><input name="users.username" size="20" th:field="*{users.username}"><br>
+				<label>Location:</label><input name="location" size="20" th:field="*{location}"><br>
+				<input name="submit" type="submit" value="submit"/>
+			</form>
+			<a href="index.html">Return to menu</a>
+		</div>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="assets/style.css">
+		<link rel="stylesheet" href="../static/assets/style.css">
 		<title>Create New User</title>
 
 		<script type="text/javascript">
@@ -42,16 +42,11 @@
 </head>
 	<body>
 		<header>
-			<a href="index.html"><img src="assets/logo.png"></a>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
 		</header>
 
-		<nav>
-			<a href="exercise.html">Exercise</a>
+		<nav class=blanknav></nav>
 
-			<a href="users.html">Users</a>
-
-			<a href="session.html">Sessions</a>
-		</nav>
 	<div class="main">
 		<form th:object="${newUser}" th:action="@{/updateUser/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 			<label>User Name:</label><input name="userName" size="20" th:field="*{userName}"><br>

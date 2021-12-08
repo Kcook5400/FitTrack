@@ -1,27 +1,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/assets/style.css">
 		<title>View All Exercise Sessions</title>
 	</head>
 	<body>
-		<form>
-			<table>
-				<tr>
-                    <th>ID</th>
-                    <th>Day Performed</th>
-                    <th>Username</th>
-                    <th>Location</th>
-                </tr>
-				<tr th:each= "currentSession : ${session}" style="text-align:center">
-					<td th:text= "${currentSession.id}"/>
-					<td th:text= "${currentSession.dayPerformed}"/>
-					<td th:text= "${currentSession.user.username}"/>
-					<td th:text= "${currentSession.location}"/>
-					<td><a th:href= "@{/editSession/{id}(id=${currentSession.id})}">Edit</a></td>
-					<td><a th:href= "@{/deleteSession/{id}(id=${currentSession.id})}">Delete</a></td>
-				</tr>
-			</table>
-		</form>
-	<a href="../inputSession">Add a new session</a>
+		<header>
+			<a href="index.html"><img src="../static/assets/logo.png"></a>
+		</header>
+
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="inputExercise">Exercise</a>						
+			<a href="inputMeals">Meals</a>			
+			<a href="inputProgress">Progress</a>			
+		</nav>
+
+		<div class="main">
+			<form>
+				<table>
+					<tr>
+						<th>ID</th>
+						<th>Day Performed</th>
+						<th>Username</th>
+						<th>Location</th>
+					</tr>
+					<tr th:each= "currentSession : ${session}" style="text-align:center">
+						<td th:text= "${currentSession.id}"/>
+						<td th:text= "${currentSession.dayPerformed}"/>
+						<td th:text= "${currentSession.user.username}"/>
+						<td th:text= "${currentSession.location}"/>
+						<td><a th:href= "@{/editSession/{id}(id=${currentSession.id})}">Edit</a></td>
+						<td><a th:href= "@{/deleteSession/{id}(id=${currentSession.id})}">Delete</a></td>
+					</tr>
+				</table>
+			</form>
+			<a href="../inputSession">Add a new session</a>
+		</div>	
 	</body>
 </html>
