@@ -17,8 +17,8 @@
 					alert("Please enter length of exercise!");
 					return false;
 				}
-				if(inputForm.userId.value == "") {
-					alert("Please enter a user ID!");
+				if (isNaN(inputForm.minutes.value)) {
+					alert("Minutes must be entered as a number!");
 					return false;
 				}
 				return (true);

@@ -13,16 +13,24 @@
 					alert("Please enter a meal time(hours)!");
 					return false;
 				}
+				if (isNaN(inputForm.mealTimeHours.value)) {
+					alert("Meal time (hours) must be entered as a number!");
+					return false;
+				}
 				if(inputForm.mealTimeMInutes.value == "") {
 					alert("Please enter a meal time(minutes)!");
+					return false;
+				}
+				if (isNaN(inputForm.mealTimeMInutes.value)) {
+					alert("Meal time (minutes) must be entered as a number!");
 					return false;
 				}
 				if(inputForm.calories.value == "") {
 					alert("Please enter a calorie value!");
 					return false;
 				}
-				if(inputForm.userId.value == "") {
-					alert("Please enter a user ID!");
+				if (isNaN(inputForm.calories.value)) {
+					alert("Calories must be entered as a number!");
 					return false;
 				}
 				return (true);

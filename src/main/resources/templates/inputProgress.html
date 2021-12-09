@@ -5,24 +5,41 @@
 		<title>Input Progress Information</title>
 		<script type = "text/javascript">
 			function validateInput(form) {
+				var index1 = currentWeight.value.indexOf(".");
+				var index2 = goalWeight.value.indexOf(".");
+				var curWeight = currentWeight.value.substring(0, index1) + currentWeight.value.substring(index1 + 1);
+				var glWeight = goalWeight.value.substring(0, index1) + goalWeight.value.substring(index1 + 1);;
+				
 				if(inputForm.hoursSlept.value == "") {
 					alert("Please enter hours slept!");
+					return false;
+				}
+				if (isNaN(inputForm.hoursSlept.value)) {
+					alert("Hours slept must be entered as a number!");
 					return false;
 				}
 				if(inputForm.minutesSlept.value == "") {
 					alert("Please enter minutes slept!");
 					return false;
 				}
+				if (isNaN(inputForm.minutesSlept.value)) {
+					alert("Minutes slept must be entered as a number!");
+					return false;
+				}
 				if(inputForm.goalWeight.value == "") {
 					alert("Please enter a goal weight!");
+					return false;
+				}
+				if (isNaN(glWeight)) {
+					alert("Goal weight must be entered as a number!");
 					return false;
 				}
 				if(inputForm.currentWeight.value == "") {
 					alert("Please enter a current exercise!");
 					return false;
 				}
-				if(inputForm.userId.value == "") {
-					alert("Please enter a user ID!");
+				if (isNaN(curWeight)) {
+					alert("Current weight must be entered as a number!");
 					return false;
 				}
 				return (true);
