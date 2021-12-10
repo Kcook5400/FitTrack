@@ -27,7 +27,7 @@
 			<form th:object="${newUser}" th:action="@{/login/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 				<h1>Login to FitTrack</h1>
 				<label>User Name:</label><input name="userName" size="20" th:field="*{userName}"><br>
-				<label>Password:</label><input name="password" size="20" th:field="*{password}"><br>
+				<label>Password:</label><input name="password" type="password" size="20" th:field="*{password}"><br>
 				<input name="submit" type="submit" value="Submit"/>
 			</form>
 			<a href="../inputUser">Create a new account</a>
