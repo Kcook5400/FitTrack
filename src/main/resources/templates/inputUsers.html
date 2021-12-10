@@ -21,6 +21,14 @@
 				
 				return true;
 			}
+			function showPassword() {
+				var x = document.getElementById("password");
+				if (x.type === "password") {
+				    x.type = "text";
+				} else {
+				    x.type = "password";
+				}				
+			}
 </script>
 
 </head>
@@ -34,7 +42,8 @@
 	<div class="main">
 		<form th:object="${newUser}" th:action="@{/updateUser/{id}(id=${newUser.id})}" name = "inputForm" onsubmit = "return validateInput(this);" method='POST'>
 			<label>User Name:</label><input name="userName" size="20" th:field="*{userName}"><br>
-			<label>Password:</label><input name="password" size="20" th:field="*{password}"><br>
+			<label>Password:</label><input type="password" id="password" name="password" size="20" th:field="*{password}"><br>
+			<label>Show password</label><input type="checkbox" onclick="showPassword()" style="width:2%;"><br>
 			<label>Email:</label><input name="email" size="20" th:field="*{email}"><br>
 			<input name="submit" type="submit" value="Submit"/>
 		</form>	
